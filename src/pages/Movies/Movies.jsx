@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const Movies = () => {
+export const Movies = () => {
   // useEffect(() => {
   //   first
   // HTTP запрос коллекции фильмов
@@ -21,5 +21,3 @@ const Movies = () => {
     </div>
   );
 };
-
-export default Movies;

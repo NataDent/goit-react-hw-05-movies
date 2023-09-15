@@ -1,11 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 import { lasy, Suspense } from 'react';
-import { SharedLayout } from '../components/SharedLayout';
+import { SharedLayout } from './SharedLayout/SharedLayout';
+import { Cast } from 'components/Cast/Cast';
+import { Reviews } from 'components/Reviews/Reviews';
 
-const Home = lasy(() => import('../../src/pages/Home'));
-const Movies = lasy(() => import('../../src/pages/Movies'));
-const MovieDetails = lasy(() => import('../../src/pages/MovieDetails'));
-const NotFound = lasy(() => import('../../src/pages/NotFound'));
+const Home = lasy(() => import('pages/Home/Home.jsx'));
+const Movies = lasy(() => import('pages/Movies/Movies.jsx'));
+const MovieDetails = lasy(() => import('pages/MovieDetails/MovieDetails.jsx'));
+const NotFound = lasy(() => import('pages/NotFound/NotFound.jsx'));
 
 export const App = () => {
   <Suspense fallback={<div>Loading...</div>}></Suspense>;

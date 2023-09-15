@@ -1,9 +1,9 @@
 import { Link, Outlet, useParams } from 'react-router-dom';
 
-const MovieDetails = () => {
+export const MovieDetails = () => {
   const { movieId } = useParams();
 
-st Home = () => { 
+  const Home = () => {
     // useEffect(() => {
     //   first
     // HTTP запрос
@@ -11,22 +11,20 @@ st Home = () => {
     //     second
     //   }
     // }, [third])
-    
 
-  return (
-    <div>
-      <h1>MovieDetails: {movieId}</h1>
-      <ul>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
-      </ul>
-      <Outlet />
-    </div>
-  );
+    return (
+      <div>
+        <h1>MovieDetails: {movieId}</h1>
+        <ul>
+          <li>
+            <Link to="cast">Cast</Link>
+          </li>
+          <li>
+            <Link to="reviews">Reviews</Link>
+          </li>
+        </ul>
+        <Outlet />
+      </div>
+    );
+  };
 };
-
-export default MovieDetails;

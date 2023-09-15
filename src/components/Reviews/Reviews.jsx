@@ -1,8 +1,6 @@
 const { useParams } = require('react-router-dom');
 
-const Reviews = () => {
+export const Reviews = () => {
   const { movieId } = useParams();
   return <div>Reviews</div>;
 };
-
-export default Reviews;
