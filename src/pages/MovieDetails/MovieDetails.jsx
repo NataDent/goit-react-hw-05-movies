@@ -15,6 +15,7 @@ export const MovieDetails = () => {
     return (
       <div>
         <h1>MovieDetails: {movieId}</h1>
+        <Link>Back to movies</Link>
         <ul>
           <li>
             <Link to="cast">Cast</Link>

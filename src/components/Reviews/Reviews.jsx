@@ -1,6 +1,6 @@
-const { useParams } = require('react-router-dom');
+// const { useParams } = require('react-router-dom');
 
 export const Reviews = () => {
-  const { movieId } = useParams();
+  // const { movieId } = useParams();
   return <div>Reviews</div>;
 };
