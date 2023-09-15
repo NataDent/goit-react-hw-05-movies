@@ -2,9 +2,9 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 
 export const Movies = () => {
-  const [movies, setMovies] = useState(['movie - 1', 'movie - 2', 'movie - 3']);
+  const [movies] = useState(['movie - 1', 'movie - 2', 'movie - 3']);
   const [searchParams, setSearchParams] = useSearchParams();
-  const movieId = searchParams.get('movieId');
+  const movieId = searchParams.get('movieId') ?? '';
   // useEffect(() => {
   //   first
   // HTTP запрос коллекции фильмов
