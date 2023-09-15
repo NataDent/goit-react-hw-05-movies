@@ -1,4 +1,4 @@
-export const Home = () => {
+export default function Home() {
   // useEffect(() => {
   //   first
   // HTTP запрос
@@ -8,4 +8,4 @@ export const Home = () => {
   // }, [third])
 
   return <div>Home</div>;
-};
+}

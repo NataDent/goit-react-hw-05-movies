@@ -1,7 +1,7 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 
-export const Movies = () => {
+export default function Movies() {
   const [movies] = useState(['movie - 1', 'movie - 2', 'movie - 3']);
   const [searchParams, setSearchParams] = useSearchParams();
   const movieId = searchParams.get('movieId') ?? '';
@@ -9,7 +9,7 @@ export const Movies = () => {
   //   first
   // HTTP запрос коллекции фильмов
   //   return () => {
-  //     second
+  //     secondc
   //   }
   // }, [third])
 
@@ -34,4 +34,4 @@ export const Movies = () => {
       })}
     </div>
   );
-};
+}

@@ -1,6 +1,6 @@
 import { Link, Outlet, useParams } from 'react-router-dom';
 
-export const MovieDetails = () => {
+export default function MovieDetails() {
   const { movieId } = useParams();
 
   // useEffect(() => {
@@ -26,4 +26,4 @@ export const MovieDetails = () => {
       <Outlet />
     </div>
   );
-};
+}
