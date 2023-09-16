@@ -20,59 +20,57 @@ export const getAllTrandingMoviesToday = async page => {
 
 // Search movie by keyword
 export const searchMovieByKeyword = async (query, page) => {
-  const { data } = await axios.get('/search/movie',
+  const { data } = await axios.get('/search/movie', {
     params: {
-    language: 'en-US',
-    query,
-    page,
-  }
+      language: 'en-US',
+      query,
+      page,
+    },
     headers: {
-    Authorization: `Bearer ${AUTH_TOKEN}`,
-  },
-  );
+      Authorization: `Bearer ${AUTH_TOKEN}`,
+    },
+  });
   return data;
 };
 
-
 // Get details of a movie by ID
-export const getMovieDetailsById = async (id) => {
-  const { data } = await axios.get(`/movie/${id}`,
+export const getMovieDetailsById = async id => {
+  const { data } = await axios.get(`/movie/${id}`, {
     params: {
-    id,
-    language: 'en-US',
-  },
+      id,
+      language: 'en-US',
+    },
     headers: {
-    Authorization: `Bearer ${AUTH_TOKEN}`,
-  },
-  );
-   return data;
+      Authorization: `Bearer ${AUTH_TOKEN}`,
+    },
+  });
+  return data;
 };
 
 // Getting the cast of the movie
-export const getMovieCast = async (id) => {
-  const { data } = await axios.get(`/movie/${id}/credits`, paarams: {
-    id,
-    language: 'en-US',
-  },
-    headers: {
-    Authorization: `Bearer ${AUTH_TOKEN}`,
-  },
-  );
-   return data;
-};
-
-// Getting the user reviews for a movie
-export const getMovieReviews = async (id) => {
-  const { data } = await axios.get(`/movie/${id}/reviews`,
+export const getMovieCast = async id => {
+  const { data } = await axios.get(`/movie/${id}/credits`, {
     paarams: {
-    id,
-    language: 'en-US',
-  },
+      id,
+      language: 'en-US',
+    },
     headers: {
-    Authorization: `Bearer ${AUTH_TOKEN}`,
-  },
-  );
+      Authorization: `Bearer ${AUTH_TOKEN}`,
+    },
+  });
   return data;
 };
 
-
+// Getting the user reviews for a movie
+export const getMovieReviews = async id => {
+  const { data } = await axios.get(`/movie/${id}/reviews`, {
+    paarams: {
+      id,
+      language: 'en-US',
+    },
+    headers: {
+      Authorization: `Bearer ${AUTH_TOKEN}`,
+    },
+  });
+  return data;
+};

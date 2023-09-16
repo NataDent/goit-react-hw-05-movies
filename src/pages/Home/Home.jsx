@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getAllTrandingMoviesToday } from 'components/api';
+import { getAllTrandingMoviesToday } from '../components/api';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
