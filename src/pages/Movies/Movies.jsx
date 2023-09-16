@@ -1,8 +1,9 @@
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 
-export default function Movies() {
+const Movies = () => {
   const [movies] = useState(['movie - 1', 'movie - 2', 'movie - 3']);
+  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const movieId = searchParams.get('movieId') ?? '';
   // useEffect(() => {
@@ -27,11 +28,13 @@ export default function Movies() {
       <input type="text" onChange={updateQueryString} value={movieId} />;
       {visibleMovies.map(movie => {
         return (
-          <Link key={movie} to={`${movie}`}>
+          <Link key={movie} to={`${movie}`} state={{ from: location }}>
             {movie}
           </Link>
         );
       })}
     </div>
   );
-}
+};
+
+export default Movies;

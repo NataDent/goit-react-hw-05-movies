@@ -1,11 +1,28 @@
-export default function Home() {
-  // useEffect(() => {
-  //   first
-  // HTTP запрос
-  //   return () => {
-  //     second
-  //   }
-  // }, [third])
+import { useState, useEffect } from 'react';
+import { getAllTrandingMoviesToday } from 'components/api';
 
-  return <div>Home</div>;
-}
+const Home = () => {
+  const [movies, setMovies] = useState([]);
+  useEffect(() => {
+    const getMovies = async () => {
+      try {
+        const { result } = await getAllTrandingMoviesToday();
+        setMovies(result);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getMovies();
+  }, []);
+
+  return (
+    <section>
+      <div>
+        <h2>Trending today</h2>
+        <ul movies={movies}></ul>
+      </div>
+    </section>
+  );
+};
+
+export default Home;
