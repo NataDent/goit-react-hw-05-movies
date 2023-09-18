@@ -2,8 +2,7 @@ import { MoviesGallery } from 'components/MoviesGallery/MoviesGallery';
 import { useState, useEffect } from 'react';
 import { getAllTrandingMoviesToday, getMovieDetailsById } from 'utils/api';
 import { Container, SectionStyled, SectionTitle } from './Home.styled';
-import { Loader } from "utils/Loader";
-import InfiniteScroll from "react-infinite-scroll-component";
+
 
 
 const Home = () => {
@@ -27,19 +26,9 @@ const Home = () => {
     <SectionStyled>
       <Container>
         <SectionTitle>Trending today</SectionTitle>
-        <InfiniteScroll
-          dataLength={movies.length} //This is important field to render the next data
-          next={getAllTrandingMoviesToday}
-          hasMore={true}
-          loader={<Loader key={0} loading={true} />}
-          endMessage={
-            <p style={{ textAlign: 'center' }}>
-              <b> You've already seen it all</b>
-            </p>
-          }
-        >
+      
         <MoviesGallery movies={movies} onClick={getMovieDetailsById} />
-        </InfiniteScroll>
+      
       </Container>
     </SectionStyled>
   );

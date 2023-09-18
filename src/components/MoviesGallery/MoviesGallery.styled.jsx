@@ -1,18 +1,18 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const MoviesGalleryStyled = styled.ul`
-/* text-decoration: none; */
-display: grid;
+  text-decoration: none;
+  display: grid;
   width: 396px;
   grid-template-columns: repeat(auto-fill, min(300px));
   grid-gap: 16px;
   margin-top: 0;
   margin-bottom: 0;
-  padding:  48px;
+  padding: 48px;
   list-style: none;
   margin-left: auto;
   margin-right: auto;
-
   @media (min-width: 712px) {
     width: 712px;
   }
@@ -27,25 +27,45 @@ display: grid;
   }
 `;
 
+export const LinkStyled = styled(NavLink)`
+  color: black;
+
+  text-decoration: none;
+  &:hover {
+    color: #be5edc;
+  }
+`;
+
 export const GalleryItemStyled = styled.li`
   width: 300px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-    transition: transform 250ms linear;  
+  background: #fff;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 10%);
+  margin: 0.5em;
+  border-radius: 20px;
+  transition: transform 250ms linear;
+  display: inline-block;
+  display: table-caption;
+  text-decoration: none;
   &:hover {
-    transform: scale(1.03);
     cursor: pointer;
+
+    transform: scale(1.05);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+  }
 `;
 
 export const MovieTitle = styled.h2`
-display: block;
+  /* display: block; */
   font-size: large;
   font-weight: 600;
   padding: 16px;
   min-height: 80px;
   line-height: 1.3;
-  margin-left:auto;
-  margin-right: auto;
+  text-align: center;
+`;
+export const GalleryItemImageStyled = styled.img`
+  display: block;
+  width: 100%;
+  height: auto;
+  /* object-fit: cover; */
 `;

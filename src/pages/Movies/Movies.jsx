@@ -2,6 +2,7 @@ import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { searchMovieByKeyword } from 'utils/api';
 import { SearchBar } from 'components/Searcbar/Searcbar';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Movies = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -40,8 +41,11 @@ const Movies = () => {
 
   const visibleMovies = movies.filter(({ title }) => title.includes(movieId));
   return (
+
     <div>
+      <ToastContainer autoclose={5000}/>
       <SearchBar onChange={updateQueryString} value={movieId} />
+      {error && !isLoading && toast.error('OOPS! THERE WAS AN ERROR!')}
       {visibleMovies.map(({ id, title }) => {
         return (
           <Link key={id} to={`${id}`} state={{ from: location }}>
