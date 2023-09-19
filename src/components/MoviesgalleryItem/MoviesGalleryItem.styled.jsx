@@ -1,30 +1,33 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const ItemContainer = styled.div`
   padding: 0 16px;
 `;
-export const ButtonBack = styled.button`
-  display: block;
+
+export const StyledLink = styled(NavLink)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
   font-family: 'Roboto';
   font-weight: 600;
-  font-size: 32px;
+  font-size: 24px;
   line-height: 1.3;
-  min-width: 108px;
+  width: 160px;
   min-height: 48px;
-  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
   color: #ffffff;
-  background-color: #ff6b01;
+  background: #be5edc;
   border-color: #ffffff;
   border-radius: 5px;
-  background: linear-gradient(transparent, grey);
-
+  text-decoration: none;
+  text-align: center;
   &:hover,
   &:focus {
-    background: #be5edc;
-    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-    border-radius: 5px;
     border: none;
     cursor: pointer;
-    transform: translateY(5%) scale(1.1);
+    transform: translateY(5%) scale(1.05);
   }
 `;

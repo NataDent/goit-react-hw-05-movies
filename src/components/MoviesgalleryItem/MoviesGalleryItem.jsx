@@ -1,6 +1,6 @@
 import NotFound from 'pages/NotFound/NotFound';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { ButtonBack, ItemContainer } from './MoviesGalleryItem.styled';
+import { Outlet, useLocation } from 'react-router-dom';
+import { ItemContainer, StyledLink } from './MoviesGalleryItem.styled';
 import { Link } from 'react-router-dom';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w500';
@@ -14,11 +14,13 @@ export const MoviesGalleryItem = ({
   genres = [],
 }) => {
   const location = useLocation();
-  const navigate = useNavigate();
   const image = poster_path ? `${BASE_URL}${poster_path}` : <NotFound />;
 
   return (
     <ItemContainer key={id}>
+      <StyledLink to={location?.state?.from?.pathname ?? '/'}>
+        Go Back
+      </StyledLink>
       <img src={image} alt={original_title} />
       <h1>{original_title}</h1>
       <p>User Score: {Math.round(vote_average) * 10}%</p>
@@ -42,14 +44,7 @@ export const MoviesGalleryItem = ({
           </li>
         </ul>
       </div>
-      <ButtonBack
-        type="button"
-        onClick={() => {
-          navigate(location?.state?.from?.pathname ?? '/');
-        }}
-      >
-        Go Back
-      </ButtonBack>
+
       <Outlet />
     </ItemContainer>
   );

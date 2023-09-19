@@ -1,15 +1,33 @@
-// const { useParams } = require('react-router-dom');
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { getMovieCast } from 'utils/api';
+
+import { CastInfo } from 'components/CastInfo/CastInfo';
 
 export const Cast = () => {
-  // const { movieId } = useParams();
+  const [casting, setCasting] = useState([]);
 
-  // useEffect(() => {
-  //   first
-  // HTTP запрос
-  //   return () => {
-  //     second
-  //   }
-  // }, [third])
+  const { movieId } = useParams();
 
-  return <div>Cast</div>;
+  useEffect(() => {
+    const getCasting = async () => {
+      try {
+        const { cast } = await getMovieCast(movieId);
+        setCasting(cast);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getCasting();
+  }, [movieId]);
+
+  return (
+    <>
+      {casting.length === 0 ? (
+        'Sorry! There is no casting information for this movie'
+      ) : (
+        <CastInfo actors={casting} />
+      )}
+    </>
+  );
 };
