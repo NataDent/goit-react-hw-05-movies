@@ -9,6 +9,8 @@ export const FormStyled = styled.form`
   border-radius: 3px;
   outline: 1px solid black;
   overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const InputStyled = styled.input`
@@ -17,7 +19,7 @@ export const InputStyled = styled.input`
   font: inherit;
   font-size: 20px;
   border: none;
- outline: none;
+  outline: none;
   padding-left: 4px;
   padding-right: 4px;
   ::placeholder {
@@ -42,7 +44,7 @@ export const SearchButtonStyled = styled.button`
   outline: none;
   padding: 4px;
   text-align: center;
-  font-size:16px;
+  font-size: 16px;
   &:hover {
     opacity: 1;
     color: white;

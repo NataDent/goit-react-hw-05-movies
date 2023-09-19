@@ -1,34 +1,38 @@
-import { useRef, Suspense } from 'react';
-import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
+import { MoviesGalleryItem } from 'components/MoviesgalleryItem/MoviesGalleryItem';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { getMovieDetailsById } from 'utils/api';
 
 const MovieDetails = () => {
-  const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
+  const [details, setDetails] = useState({});
+
   const { movieId } = useParams();
 
-  // useEffect(() => {
-  //   first
-  // HTTP запрос
-  //   return () => {
-  //     second
-  //   }
-  // }, [third])
+  useEffect(() => {
+    const getDetails = async () => {
+      try {
+        const { movieDetails } = await getMovieDetailsById(movieId);
+        setDetails(movieDetails);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getDetails(movieId);
+  }, [movieId]);
+
+  const { id, poster_path, original_title, vote_average, overview, genres } =
+    details;
 
   return (
     <div>
-      <h1>MovieDetails: {movieId}</h1>
-      <Link to={backLinkLocationRef.current}>Back to movies</Link>
-      <ul>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
-      </ul>
-      <Suspense fallback={<div>Loading information...</div>}>
-        <Outlet />
-      </Suspense>
+      <MoviesGalleryItem
+        id={id}
+        poster_path={poster_path}
+        original_title={original_title}
+        vote_average={vote_average}
+        overview={overview}
+        genres={genres}
+      />
     </div>
   );
 };
