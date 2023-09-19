@@ -1,17 +1,32 @@
-export const Reviews = ({ reviews }) => {
+import { ReviewsInfo } from 'components/ReviewsInfo/ReviewsInfo';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { getMovieReviews } from 'utils/api';
+
+export const Reviews = () => {
+  const [reviews, setSReviews] = useState([]);
+
+  const { movieId } = useParams();
+
+  useEffect(() => {
+    const getReviews = async () => {
+      try {
+        const { results } = await getMovieReviews(movieId);
+        setSReviews(results);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getReviews();
+  }, [movieId]);
+
   return (
-    <div>
-      <ul>
-        {reviews.map(({ id, author, content, updated_at }) => (
-          <li key={id}>
-            <h3>Author: {author}</h3>
-            <p>{content}</p>
-            <p>
-              <b>Date:</b> {updated_at}
-            </p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {reviews.length === 0 ? (
+        'Sorry! There are no any Reviews for this movie'
+      ) : (
+        <ReviewsInfo reviews={reviews} />
+      )}
+    </>
   );
 };

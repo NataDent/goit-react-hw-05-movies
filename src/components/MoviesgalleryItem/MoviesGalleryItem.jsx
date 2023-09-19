@@ -1,6 +1,15 @@
 import NotFound from 'pages/NotFound/NotFound';
 import { Outlet, useLocation } from 'react-router-dom';
-import { ItemContainer, StyledLink } from './MoviesGalleryItem.styled';
+import {
+  AddInfoBox,
+  ItemContainer,
+  LinkCover,
+  MovieWrapper,
+  OriginalTitle,
+  StyledLink,
+  TitleMid,
+  TitleSm,
+} from './MoviesGalleryItem.styled';
 import { Link } from 'react-router-dom';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w500';
@@ -21,29 +30,32 @@ export const MoviesGalleryItem = ({
       <StyledLink to={location?.state?.from?.pathname ?? '/'}>
         Go Back
       </StyledLink>
-      <img src={image} alt={original_title} />
-      <h1>{original_title}</h1>
-      <p>User Score: {Math.round(vote_average) * 10}%</p>
-      <h3>Overview</h3>
-      <p>{overview}</p>
-      <h4>Genres</h4>
-      <p>{genres.map(el => el.name).join(', ')}.</p>
-
-      <div>
-        <h3>Additional information</h3>
-        <ul>
-          <li>
+      <MovieWrapper>
+        <img src={image} alt={original_title} />
+        <div>
+          <OriginalTitle>{original_title}</OriginalTitle>
+          <p>User Score: {Math.round(vote_average) * 10}%</p>
+          <TitleMid>Overview</TitleMid>
+          <p>{overview}</p>
+          <TitleSm>Genres</TitleSm>
+          <p>{genres.map(el => el.name).join(', ')}.</p>
+        </div>
+      </MovieWrapper>
+      <AddInfoBox>
+        <TitleMid>Additional information</TitleMid>
+        <LinkCover>
+          <Link>
             <Link to="cast" state={{ from: location }}>
               Cast
             </Link>
-          </li>
+          </Link>
           <li>
             <Link to="reviews" state={{ from: location }}>
               Reviews
             </Link>
           </li>
-        </ul>
-      </div>
+        </LinkCover>
+      </AddInfoBox>
 
       <Outlet />
     </ItemContainer>

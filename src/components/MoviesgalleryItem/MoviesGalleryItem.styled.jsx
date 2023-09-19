@@ -31,3 +31,39 @@ export const StyledLink = styled(NavLink)`
     transform: translateY(5%) scale(1.05);
   }
 `;
+export const MovieWrapper = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
+export const OriginalTitle = styled.h1`
+  display: block;
+  color: #be5edc;
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0 auto;
+`;
+
+export const TitleMid = styled.h3`
+  display: block;
+  color: #be5edc;
+  font-size: 20px;
+  font-weight: 600;
+`;
+
+export const TitleSm = styled.h4`
+  display: block;
+  color: #be5edc;
+  font-size: 16px;
+  font-weight: 600;
+`;
+
+export const AddInfoBox = styled.div`
+  display: block;
+`;
+
+export const LinkCover = styled.ul`
+  display: flex;
+  gap: 20px;
+  margin: 20px auto;
+`;
