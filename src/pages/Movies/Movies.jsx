@@ -3,22 +3,22 @@ import { useState, useEffect } from 'react';
 import { searchMovieByKeyword } from 'utils/api';
 import { SearchBar } from 'components/Searcbar/Searcbar';
 import { toast, ToastContainer } from 'react-toastify';
+import { useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
 
-  const [query, setQuery] = useState('');
-  //
+  const query = searchParams.get('movieId');
 
   useEffect(() => {
     const getMovieId = async () => {
       if (!query) return;
       setIsLoading(true);
-
-      setQuery(e => e.target.value);
+      setSearchParams(e => e.target.value);
 
       try {
         const { results } = await searchMovieByKeyword(query);
@@ -30,14 +30,14 @@ const Movies = () => {
       }
     };
     getMovieId(query);
-  }, [query]);
+  }, [setSearchParams, query]);
 
   // const visibleMovies = movies.filter(({ title }) => title.includes(movieId));
-  const onChange = () => setQuery(query);
+  const handleSubmit = searchParams({ movieId: query });
   return (
     <div>
       <ToastContainer autoclose={5000} />
-      <SearchBar onChange={onChange} value={query} />
+      <SearchBar handleSubmit={handleSubmit} value={query} />
       {error && !isLoading && toast.error('OOPS! THERE WAS AN ERROR!')}
       {movies.map(({ id, title }) => {
         return (

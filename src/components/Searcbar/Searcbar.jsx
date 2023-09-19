@@ -1,27 +1,23 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { FormStyled, InputStyled, SearchButtonStyled } from './Searcbar.styled';
-import { useSearchParams } from 'react-router-dom';
+
 import { toast } from 'react-toastify';
 
-export const SearchBar = ({ onChange }) => {
+export const SearchBar = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
 
-  const movieId = searchParams.get('movieId');
-
-  const updateQueryString = e => {
-    const movieIdValue = e.target.value;
-    if (movieIdValue === '') {
-      return setSearchParams({});
-    }
-    setSearchParams({ movieId: movieIdValue });
-  };
+  // const updateQueryString = e => {
+  //   const movieIdValue = e.target.value;
+  //   if (movieIdValue === '') {
+  //     return setSearchParams({});
+  //   }
+  //   setSearchParams({ movieId: movieIdValue });
+  // };
 
   const handleInput = e => {
-    const { value } = e.currentTarget.value;
-    setQuery(value.toLowerCase().trim());
-    updateQueryString(value);
+    const newQuery = e.currentTarget.value.toLowerCase().trim();
+    setQuery(newQuery);
   };
 
   const handleSubmit = e => {
@@ -30,8 +26,10 @@ export const SearchBar = ({ onChange }) => {
       toast.info('Please enter your search term');
       return;
     }
-    onChange(query);
+    onSubmit(query);
+    setQuery('');
   };
+
   return (
     <>
       <FormStyled onSubmit={handleSubmit}>
@@ -39,7 +37,7 @@ export const SearchBar = ({ onChange }) => {
           type="text"
           autoComplete="off"
           autoFocus
-          placeholder="Search movies"
+          placeholder="Search movies 👓"
           value={query}
           onChange={handleInput}
         />
@@ -50,6 +48,5 @@ export const SearchBar = ({ onChange }) => {
 };
 
 SearchBar.propTypes = {
-  value: PropTypes.string,
-  onChange: PropTypes.func,
+  query: PropTypes.string,
 };
