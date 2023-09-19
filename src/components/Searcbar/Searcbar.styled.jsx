@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { HiSearch } from 'react-icons/hi';
 
 export const FormStyled = styled.form`
   display: flex;
@@ -26,6 +27,13 @@ export const InputStyled = styled.input`
     font: inherit;
     font-size: 18px;
   }
+`;
+
+export const Icon = styled(HiSearch)`
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 6px;
 `;
 
 export const SearchButtonStyled = styled.button`

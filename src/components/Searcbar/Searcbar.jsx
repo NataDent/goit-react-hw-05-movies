@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { FormStyled, InputStyled, SearchButtonStyled } from './Searcbar.styled';
+import {
+  FormStyled,
+  Icon,
+  InputStyled,
+  SearchButtonStyled,
+} from './Searcbar.styled';
 
 import { toast } from 'react-toastify';
 
@@ -41,7 +46,11 @@ export const SearchBar = ({ onSubmit }) => {
           value={query}
           onChange={handleInput}
         />
-        <SearchButtonStyled type="submit">Search</SearchButtonStyled>
+
+        <SearchButtonStyled type="submit">
+          Search
+          <Icon />
+        </SearchButtonStyled>
       </FormStyled>
     </>
   );
