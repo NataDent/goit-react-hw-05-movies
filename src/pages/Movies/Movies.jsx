@@ -1,24 +1,26 @@
-import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { searchMovieByKeyword } from 'utils/api';
 import { SearchBar } from 'components/Searcbar/Searcbar';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useSearchParams } from 'react-router-dom';
+import { MoviesGallery } from 'components/MoviesGallery/MoviesGallery';
 
 const Movies = () => {
   const [isLoading, setIsLoading] = useState(false);
+
   const [movies, setMovies] = useState([]);
+
   const [error, setError] = useState(null);
+
   const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
 
   const query = searchParams.get('movieId');
 
   useEffect(() => {
+    if (!query) return;
+
     const getMovieId = async () => {
-      if (!query) return;
       setIsLoading(true);
-      setSearchParams(e => e.target.value);
 
       try {
         const { results } = await searchMovieByKeyword(query);
@@ -30,22 +32,17 @@ const Movies = () => {
       }
     };
     getMovieId(query);
-  }, [setSearchParams, query]);
+  }, [query]);
 
-  // const visibleMovies = movies.filter(({ title }) => title.includes(movieId));
-  const handleSubmit = searchParams({ movieId: query });
+  const handleSubmit = query => {
+    setSearchParams({ movieId: query });
+  };
+
   return (
     <div>
-      <ToastContainer autoclose={5000} />
       <SearchBar handleSubmit={handleSubmit} value={query} />
       {error && !isLoading && toast.error('OOPS! THERE WAS AN ERROR!')}
-      {movies.map(({ id, title }) => {
-        return (
-          <Link key={id} to={`/movies/${id}`} state={{ from: location }}>
-            {title}
-          </Link>
-        );
-      })}
+      <MoviesGallery movies={movies} />
     </div>
   );
 };

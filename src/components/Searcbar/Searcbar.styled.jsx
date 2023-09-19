@@ -32,17 +32,20 @@ export const InputStyled = styled.input`
 export const Icon = styled(HiSearch)`
   width: 20px;
   height: 20px;
-  position: absolute;
+  /* position: absolute; */
   right: 6px;
 `;
 
 export const SearchButtonStyled = styled.button`
-  display: inline-block;
-  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 108px;
   height: 48px;
   border: 0;
   font-weight: 600;
-  /* background-size: 50%; */
+
   background-repeat: no-repeat;
   background-position: center;
   background-color: #be5edc;

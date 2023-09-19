@@ -4,14 +4,15 @@ import { useParams } from 'react-router-dom';
 import { getMovieDetailsById } from 'utils/api';
 
 const MovieDetails = () => {
-  const [details, setDetails] = useState({});
+  const [details, setDetails] = useState(null);
 
   const { movieId } = useParams();
 
   useEffect(() => {
     const getDetails = async () => {
       try {
-        const { movieDetails } = await getMovieDetailsById(movieId);
+        const movieDetails = await getMovieDetailsById(movieId);
+
         setDetails(movieDetails);
       } catch (error) {
         console.log(error.message);
@@ -19,6 +20,8 @@ const MovieDetails = () => {
     };
     getDetails(movieId);
   }, [movieId]);
+
+  if (!details) return;
 
   const { id, poster_path, original_title, vote_average, overview, genres } =
     details;

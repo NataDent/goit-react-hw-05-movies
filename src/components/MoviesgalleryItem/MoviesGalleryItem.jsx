@@ -19,14 +19,6 @@ export const MoviesGalleryItem = ({
 
   return (
     <ItemContainer key={id}>
-      <ButtonBack
-        type="button"
-        onClick={() => {
-          navigate(location?.state?.from?.pathname ?? '/');
-        }}
-      >
-        Go Back
-      </ButtonBack>
       <img src={image} alt={original_title} />
       <h1>{original_title}</h1>
       <p>User Score: {Math.round(vote_average) * 10}%</p>
@@ -50,6 +42,14 @@ export const MoviesGalleryItem = ({
           </li>
         </ul>
       </div>
+      <ButtonBack
+        type="button"
+        onClick={() => {
+          navigate(location?.state?.from?.pathname ?? '/');
+        }}
+      >
+        Go Back
+      </ButtonBack>
       <Outlet />
     </ItemContainer>
   );

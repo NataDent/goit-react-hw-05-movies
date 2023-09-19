@@ -9,18 +9,18 @@ export const ButtonBack = styled.button`
   font-weight: 600;
   font-size: 32px;
   line-height: 1.3;
-  min-width: 120px;
-  min-height: 40px;
-
+  min-width: 108px;
+  min-height: 48px;
+  margin-left: auto;
   color: #ffffff;
-  background-color: transparent;
+  background-color: #ff6b01;
   border-color: #ffffff;
   border-radius: 5px;
   background: linear-gradient(transparent, grey);
 
   &:hover,
   &:focus {
-    background: #ff6b01;
+    background: #be5edc;
     box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
     border-radius: 5px;
     border: none;
