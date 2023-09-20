@@ -15,7 +15,7 @@ const Home = () => {
     const getMovies = async () => {
       try {
         const { results } = await getAllTrandingMoviesToday(page);
-        setMovies(results);
+        setMovies(prevState => [...results, ...results]);
       } catch (error) {
         console.log(error.message);
       }
