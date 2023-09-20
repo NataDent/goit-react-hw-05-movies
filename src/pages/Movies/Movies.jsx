@@ -24,7 +24,7 @@ const Movies = () => {
 
       try {
         const { results } = await searchMovieByKeyword(query);
-        setMovies(state => [...state, ...results]);
+        setMovies(results);
       } catch (error) {
         setError(true);
       } finally {

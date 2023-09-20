@@ -48,12 +48,14 @@ export const TitleMid = styled.h3`
   display: block;
   font-size: 20px;
   font-weight: 600;
+  margin-left: 20px;
 `;
 
 export const TitleSm = styled.h4`
   display: block;
   font-size: 16px;
   font-weight: 600;
+  margin-left: 20px;
 `;
 
 export const AddInfoBox = styled.div`
@@ -63,5 +65,5 @@ export const AddInfoBox = styled.div`
 export const LinkCover = styled.ul`
   display: flex;
   gap: 20px;
-  margin: 20px auto;
+  margin: 20px;
 `;

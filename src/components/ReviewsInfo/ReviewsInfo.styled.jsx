@@ -4,6 +4,7 @@ export const RevTitle = styled.h3`
   font-size: 20px;
   font-weight: 600;
   padding: 8px;
+  margin-left: 20px;
 `;
 
 export const InfoWrapper = styled.ul`
