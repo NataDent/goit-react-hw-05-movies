@@ -27,7 +27,6 @@ const Home = () => {
     <SectionStyled>
       <Container>
         <SectionTitle>Trending today</SectionTitle>
-
         <MoviesGallery movies={movies} loadMore={loadMore} />
       </Container>
     </SectionStyled>

@@ -13,7 +13,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w500';
 const errorImage =
-  'https://as2.ftcdn.net/v2/jpg/02/17/34/67/1000_F_217346796_TSg5VcYjsFxZtIDK6Qdctg3yqAapG7Xa.jpg';
+  ' https://i.ebayimg.com/00/s/NDAwWDQwMA==/z/mrYAAOSwWk5kux96/$_1.JPG?set_id=8800005007';
 
 export const MoviesGallery = ({ movies, loadMore }) => {
   const location = useLocation();
