@@ -7,12 +7,14 @@ import {
 } from './MoviesGallery.styled';
 
 import { useLocation } from 'react-router-dom';
-import NotFound from 'pages/NotFound/NotFound';
+
 import { Loader } from 'utils/Loader';
 import InfiniteScroll from 'react-infinite-scroll-component';
 // import { useState } from 'react';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w500';
+const errorImage =
+  'https://as2.ftcdn.net/v2/jpg/02/17/34/67/1000_F_217346796_TSg5VcYjsFxZtIDK6Qdctg3yqAapG7Xa.jpg';
 
 export const MoviesGallery = ({ movies, LoadMore }) => {
   const location = useLocation();
@@ -33,11 +35,9 @@ export const MoviesGallery = ({ movies, LoadMore }) => {
         >
           <MoviesGalleryStyled>
             {movies.map(({ id, title, backdrop_path }) => {
-              const image = backdrop_path ? (
-                `${BASE_URL}${backdrop_path}`
-              ) : (
-                <NotFound />
-              );
+              const image = backdrop_path
+                ? `${BASE_URL}${backdrop_path}`
+                : errorImage;
 
               return (
                 <GalleryItemStyled key={id}>
