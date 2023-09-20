@@ -10,6 +10,7 @@ import {
   TitleSm,
 } from './MoviesGalleryItem.styled';
 import { Link } from 'react-router-dom';
+import { useRef } from 'react';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w500';
 const errorImage =
@@ -25,12 +26,11 @@ export const MoviesGalleryItem = ({
 }) => {
   const location = useLocation();
   const image = poster_path ? `${BASE_URL}${poster_path}` : errorImage;
+  const GoBack = useRef(location?.state?.from ?? '/');
 
   return (
     <ItemContainer key={id}>
-      <StyledLink to={location?.state?.from?.pathname ?? '/'}>
-        Go Back
-      </StyledLink>
+      <StyledLink to={GoBack.current}>Go Back</StyledLink>
       <MovieWrapper>
         <img src={image} alt={original_title} />
         <div>
@@ -45,11 +45,11 @@ export const MoviesGalleryItem = ({
       <AddInfoBox>
         <TitleMid>Additional information</TitleMid>
         <LinkCover>
-          <Link>
+          <li>
             <Link to="cast" state={{ from: location }}>
               Cast
             </Link>
-          </Link>
+          </li>
           <li>
             <Link to="reviews" state={{ from: location }}>
               Reviews

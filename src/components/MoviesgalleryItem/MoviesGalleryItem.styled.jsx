@@ -28,7 +28,7 @@ export const StyledLink = styled(NavLink)`
   &:focus {
     border: none;
     cursor: pointer;
-    transform: translateY(5%) scale(1.05);
+    transform: translateY(1%) scale(1.01);
   }
 `;
 export const MovieWrapper = styled.div`
