@@ -1,19 +1,20 @@
 import { InfoBox } from 'components/CastInfo/CastInfo.styled';
+import { InfoWrapper, RevTitle } from './ReviewsInfo.styled';
 
 export const ReviewsInfo = ({ reviews }) => {
   return (
     <InfoBox>
-      <ul>
+      <InfoWrapper>
         {reviews.map(({ id, author, content, updated_at }) => (
           <li key={id}>
-            <h3>Author: {author}</h3>
+            <RevTitle>Author: {author}</RevTitle>
             <p>{content}</p>
             <p>
               <b>Date:</b> {updated_at}
             </p>
           </li>
         ))}
-      </ul>
+      </InfoWrapper>
     </InfoBox>
   );
 };

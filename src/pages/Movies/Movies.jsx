@@ -40,7 +40,7 @@ const Movies = () => {
 
   return (
     <div>
-      <SearchBar handleSubmit={handleSubmit} value={query} />
+      <SearchBar onSubmitForm={handleSubmit} value={query} />
       {error && !isLoading && toast.error('OOPS! THERE WAS AN ERROR!')}
       <MoviesGallery movies={movies} />
     </div>

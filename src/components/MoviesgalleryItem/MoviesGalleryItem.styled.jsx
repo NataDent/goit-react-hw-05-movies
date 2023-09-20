@@ -46,14 +46,12 @@ export const OriginalTitle = styled.h1`
 
 export const TitleMid = styled.h3`
   display: block;
-  color: #be5edc;
   font-size: 20px;
   font-weight: 600;
 `;
 
 export const TitleSm = styled.h4`
   display: block;
-  color: #be5edc;
   font-size: 16px;
   font-weight: 600;
 `;
