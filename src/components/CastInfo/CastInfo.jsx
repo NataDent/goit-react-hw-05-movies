@@ -2,7 +2,7 @@ import { Cover, InfoBox, Span, Title } from './CastInfo.styled';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w200';
 const errorImage =
-  'https://img.freepik.com/free-vector/error-404-concept-illustration_114360-1811.jpg?w=200&t=st=1695137281~exp=1695137881~hmac=5c85dff672e9fb913c28c343e490d9ef5b0155e19e71e30d93c93b9c80d4d869';
+  'https://i.ebayimg.com/00/s/NDAwWDQwMA==/z/mrYAAOSwWk5kux96/$_1.JPG?set_id=8800005007';
 
 export const CastInfo = ({ actors }) => {
   return (

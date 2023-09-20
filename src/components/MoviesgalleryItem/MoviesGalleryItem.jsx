@@ -1,4 +1,3 @@
-import NotFound from 'pages/NotFound/NotFound';
 import { Outlet, useLocation } from 'react-router-dom';
 import {
   AddInfoBox,
@@ -13,6 +12,8 @@ import {
 import { Link } from 'react-router-dom';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w500';
+const errorImage =
+  ' https://i.ebayimg.com/00/s/NDAwWDQwMA==/z/mrYAAOSwWk5kux96/$_1.JPG?set_id=8800005007';
 
 export const MoviesGalleryItem = ({
   id,
@@ -23,7 +24,7 @@ export const MoviesGalleryItem = ({
   genres = [],
 }) => {
   const location = useLocation();
-  const image = poster_path ? `${BASE_URL}${poster_path}` : <NotFound />;
+  const image = poster_path ? `${BASE_URL}${poster_path}` : errorImage;
 
   return (
     <ItemContainer key={id}>

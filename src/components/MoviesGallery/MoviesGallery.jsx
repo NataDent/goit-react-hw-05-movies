@@ -12,6 +12,7 @@ import { Loader } from 'utils/Loader';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w500';
+
 const errorImage =
   ' https://i.ebayimg.com/00/s/NDAwWDQwMA==/z/mrYAAOSwWk5kux96/$_1.JPG?set_id=8800005007';
 
